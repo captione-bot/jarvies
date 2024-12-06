@@ -5,19 +5,15 @@ const questions = [
     answers: [
       {
         text: "YES, SUPER YUMMY!😋",
-        correct: true,
       },
       {
         text: "Not enough!",
-        correct: false,
       },
       {
         text: "HOLY MAMAMIA!",
-        correct: false,
       },
       {
         text: "NO, GRIND MORE BISH!",
-        correct: false,
       },
     ],
     type: "close-ended",
@@ -28,19 +24,15 @@ const questions = [
     answers: [
       {
         text: "Mullet, 'di na mauulet",
-        correct: false,
       },
       {
         text: "Crim",
-        correct: false,
       },
       {
         text: "burst fade + v cut",
-        correct: true,
       },
       {
         text: "Pompadour",
-        correct: false,
       },
     ],
     type: "close-ended",
@@ -51,19 +43,15 @@ const questions = [
     answers: [
       {
         text: "12yrs old",
-        correct: false,
       },
       {
         text: "45yrs old",
-        correct: false,
       },
       {
         text: "51yrs old",
-        correct: false,
       },
       {
         text: "23yrs old",
-        correct: true,
       },
     ],
     type: "close-ended",
@@ -161,12 +149,15 @@ const showQuestion = (question) => {
   switch (question.type) {
     case "close-ended":
       question.answers.forEach((answer) => {
-        const ansBtn = document.createElement("button");
+        const ansBtn = document.createElement("label");
+        const radio = document.createElement("input");
+        radio.setAttribute("type", "radio");
+        radio.setAttribute("name", "radio");
         ansBtn.textContent = answer.text;
         ansBtn.classList.add("quiz-btn");
         ansBtn.classList.add("btn");
 
-        if (answer.correct) ansBtn.dataset.correct = answer.correct;
+        ansBtn.appendChild(radio);
 
         ansBtn.addEventListener("click", selectAnswer);
         quizAnswers.appendChild(ansBtn);
@@ -243,9 +234,6 @@ const selectCheckboxAnswer = () => {
 };
 
 const selectAnswer = () => {
-  Array.from(quizAnswers.children).forEach((button) => {
-    setStatusClass(button, button.dataset.correct);
-  });
   if (shuffledQuestions.length >= currentQuestionIndex + 1) {
     nextBtn.classList.remove("hide");
     if (shuffledQuestions.length == currentQuestionIndex + 1) {
@@ -256,17 +244,6 @@ const selectAnswer = () => {
   } else {
     restartImage.classList.remove("hide");
   }
-};
-
-const setStatusClass = (element, correct) => {
-  clearStatusClass(element);
-  if (correct) element.classList.add("correct");
-  else element.classList.add("wrong");
-};
-
-const clearStatusClass = (element) => {
-  element.classList.remove("correct");
-  element.classList.remove("wrong");
 };
 
 startGame();
