@@ -57,8 +57,8 @@ const questions = [
     type: "close-ended",
   },
   {
-    image: "assets/images/gelo.jpg",
-    question: `Do you believe in the saying, "Like Father, like Daughter"?`,
+    image: "assets/images/backshot.jpg",
+    question: "What do you think the guy in black felt in this image?",
     type: "open-ended",
   },
   {
