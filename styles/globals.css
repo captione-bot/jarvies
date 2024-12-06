@@ -41,7 +41,7 @@
   .quiz-section {
     width: 100%;
     position: absolute;
-    top: 130px;
+    top: 150px;
     background-color: rgba(26, 26, 26, 0.7);
     border-radius: 16px;
     padding: 32px;
@@ -83,11 +83,16 @@
         gap: 12px;
         margin-top: 50px;
 
-
         .quiz-btn {
+          display: flex;
+          align-items: center;
           text-transform: capitalize;
           background-color: transparent;
           border: 2px solid #0066da;
+
+          input {
+            margin-left: auto;
+          }
 
           &:hover {
             background-color: #0066da;
@@ -155,26 +160,6 @@
 
 .hide {
   display: none !important;
-}
-
-.correct {
-  background-color: green !important;
-  border-color: green !important;
-
-  &:hover {
-    background-color: #024d02 !important;
-    border-color: #024d02 !important;
-  }
-}
-
-.wrong {
-  background-color: #DA0037 !important;
-  border-color: #DA0037 !important;
-
-  &:hover {
-    background-color: #920427 !important;
-    border-color: #920427 !important;
-  }
 }
 
 .quiz-question {
